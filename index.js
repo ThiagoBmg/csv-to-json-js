@@ -6,12 +6,6 @@ const PORT = process.env.PORT ?? 3030;
 app.use(express.json());
 const fs = require('fs');
 
-//const data = fs.readFileSync('mcok.csv');
-//console.log(data.toString().split(',').toString().split('\r\n'));
-//const dt = [data.toString().split(',').toString().split('\r\n')];
-//const setHeaders = dt[0][0];
-//console.log(setHeaders);
-
 class DPipeline{
 	constructor(file_name){
 		this.file_name = file_name;
@@ -20,7 +14,6 @@ class DPipeline{
 	}
 	
 	transformA(data){
-		//console.log(data.length)
 		var fdata = {}
 		for(let d =0; d < data.length;d++){
 			if(!d) this.header = data[d].toString().split(',');
@@ -33,8 +26,7 @@ class DPipeline{
 			});
 			this.response.push(JSON.parse(this.text));
 		}
-		console.log(this.response)
-
+		//console.log(this.response);
 	}
 	
 	readCsv(){
@@ -42,23 +34,20 @@ class DPipeline{
 		//console.log(data)
 		const dt = data.toString().split(',').toString().split('\r\n');
 		//console.log(dt)
-		
 		this.transformA(dt)
 	}
 }
 
-const mockdata = new DPipeline('mcok.csv');
-mockdata.readCsv()
+//const mockdata = new DPipeline('mcok.csv');
+//mockdata.readCsv()
 
-
-
-app.get('/', (req,res)=>{
-	res.send({
-		name:'Thiago',
-		age:21,
-		gender: 'M'
-	});
-});
+//app.get('/', (req,res)=>{
+//	res.send({
+//		name:'Thiago',
+//		age:21,
+//		gender: 'M'
+//	});
+//});
 
 app.listen(PORT, ()=>{
 	console.log(`running at ${PORT}`)
