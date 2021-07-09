@@ -1,3 +1,7 @@
+// projeto desenvolvido por Thiago Gomes
+// npm i express 
+// npm i dotenv
+"use strict";
 const express = require('express');
 const app = express();
 require('dotenv').config();
