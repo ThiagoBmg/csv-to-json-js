@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-const PORT = process.env.PORT ?? 3030; 
+const PORT = process.env.PORT || 3030; 
 app.use(express.json());
 const fs = require('fs');
 
@@ -44,14 +44,6 @@ class DPipeline{
 
 //const mockdata = new DPipeline('mcok.csv');
 //mockdata.readCsv()
-
-//app.get('/', (req,res)=>{
-//	res.send({
-//		name:'Thiago',
-//		age:21,
-//		gender: 'M'
-//	});
-//});
 
 app.listen(PORT, ()=>{
 	console.log(`running at ${PORT}`)
